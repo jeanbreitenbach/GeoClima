@@ -26,5 +26,8 @@ O script mostra o que mudou (preços alterados, produtos novos e removidos).
 Preço `R$ 9.999,00` na tabela é tratado como **Sob consulta**.
 Também aceita CSV com colunas `codigo;descricao;preco;unidade[;categoria]`.
 
-Para colocar foto em um produto, adicione `"imagem": "fotos/arquivo.jpg"` ao item em `produtos.js`
-(a foto é mantida nas próximas atualizações).
+## Fotos dos produtos
+
+Coloque as fotos na pasta `fotos/` com o **código do produto** como nome (ex.: `fotos/75.jpg`, `fotos/285.png`)
+e rode o script de atualização — ele liga cada foto ao produto. Sem foto, aparece um ícone da categoria.
+Os preços não aparecem nos cartões; só na janela que abre ao tocar no produto.

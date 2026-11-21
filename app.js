@@ -132,7 +132,7 @@
       b.appendChild(ico);
       b.insertAdjacentHTML("beforeend",
         `<span class="card-nome"></span><span class="card-cod">Cód. ${p.codigo}</span>` +
-        (temPreco(p) ? `<span class="card-preco">${brl(p.preco)} <small>/${unTxt(p)}</small></span>` : `<span class="card-preco consulta">Sob consulta</span>`) +
+        `<span class="card-ver">Ver preço</span>` +
         `<span class="card-check" aria-hidden="true">✓</span>`);
       b.querySelector(".card-nome").textContent = p.nome;
       b.onclick = () => abrirProduto(p);
@@ -282,8 +282,8 @@
   });
 
   // ---------- Início ----------
-  if (CFG.nomeLoja) { $(".topo h1").textContent = CFG.nomeLoja; document.title = CFG.nomeLoja + " — Catálogo"; }
-  if (TABELA.atualizadoEm) $("#data-tabela").textContent = "· atualizada em " + TABELA.atualizadoEm;
+  if (CFG.nomeLoja) { document.title = CFG.nomeLoja + " — Catálogo"; $(".logo").alt = CFG.nomeLoja; }
+  if (TABELA.atualizadoEm) $("#data-tabela").textContent = " · " + TABELA.atualizadoEm;
   renderGrade();
   atualizarResumo();
 })();

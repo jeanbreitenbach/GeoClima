@@ -101,7 +101,10 @@ def main():
     for it in itens:
         velho = antigos.get(it["codigo"], {})
         it.setdefault("categoria", velho.get("categoria") or categoria(it["descricao"]))
-        if velho.get("imagem"): it["imagem"] = velho["imagem"]
+        foto = next((f"fotos/{it['codigo']}.{e}" for e in ("jpg", "jpeg", "png", "webp")
+                     if os.path.exists(os.path.join(RAIZ, "fotos", f"{it['codigo']}.{e}"))), None)
+        if foto: it["imagem"] = foto
+        elif velho.get("imagem"): it["imagem"] = velho["imagem"]
         if velho and velho.get("preco") != it["preco"]:
             fmt = lambda v: "sob consulta" if v is None else f"R$ {v:.2f}"
             print(f"  {it['codigo']:>4} {it['descricao'][:45]:45} {fmt(velho.get('preco'))} -> {fmt(it['preco'])}")
