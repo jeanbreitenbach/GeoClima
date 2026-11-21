@@ -1,0 +1,9 @@
+{
+  "name": "geoclima-catalogo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Catálogo interativo GeoClima com preços do sistema Demanda",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}

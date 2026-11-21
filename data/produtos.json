@@ -1,0 +1,14 @@
+[
+  { "codigo": "SPL-9000-INV", "nome": "Split Hi-Wall Inverter 9.000 BTU/h", "categoria": "Split Hi-Wall", "marca": "Exemplo", "descricao": "Ideal para quartos de até 15 m². Tecnologia inverter, gás R-32, só frio.", "imagem": "" },
+  { "codigo": "SPL-12000-INV", "nome": "Split Hi-Wall Inverter 12.000 BTU/h", "categoria": "Split Hi-Wall", "marca": "Exemplo", "descricao": "Para ambientes de até 20 m². Inverter, quente e frio, Wi-Fi integrado.", "imagem": "" },
+  { "codigo": "SPL-18000-INV", "nome": "Split Hi-Wall Inverter 18.000 BTU/h", "categoria": "Split Hi-Wall", "marca": "Exemplo", "descricao": "Salas de até 30 m². Baixo ruído e alta eficiência energética (selo A).", "imagem": "" },
+  { "codigo": "SPL-24000-INV", "nome": "Split Hi-Wall Inverter 24.000 BTU/h", "categoria": "Split Hi-Wall", "marca": "Exemplo", "descricao": "Ambientes de até 40 m². Inverter, só frio, filtro antibactéria.", "imagem": "" },
+  { "codigo": "PT-36000", "nome": "Piso Teto 36.000 BTU/h", "categoria": "Piso Teto", "marca": "Exemplo", "descricao": "Comercial, para lojas e escritórios de até 60 m². Instalação no piso ou teto.", "imagem": "" },
+  { "codigo": "PT-60000", "nome": "Piso Teto 60.000 BTU/h", "categoria": "Piso Teto", "marca": "Exemplo", "descricao": "Grandes ambientes comerciais. Trifásico 380 V.", "imagem": "" },
+  { "codigo": "CST-48000", "nome": "Cassete 4 Vias 48.000 BTU/h", "categoria": "Cassete", "marca": "Exemplo", "descricao": "Distribuição de ar em 4 direções, embutido no forro.", "imagem": "" },
+  { "codigo": "CST-24000", "nome": "Cassete 4 Vias 24.000 BTU/h", "categoria": "Cassete", "marca": "Exemplo", "descricao": "Discreto e silencioso, para salas de reunião e consultórios.", "imagem": "" },
+  { "codigo": "JAN-10000", "nome": "Ar de Janela 10.000 BTU/h", "categoria": "Janela", "marca": "Exemplo", "descricao": "Instalação simples, controle remoto, 220 V.", "imagem": "" },
+  { "codigo": "PORT-12000", "nome": "Portátil 12.000 BTU/h", "categoria": "Portátil", "marca": "Exemplo", "descricao": "Sem instalação fixa, com rodízios e kit de janela.", "imagem": "" },
+  { "codigo": "KIT-INST-3M", "nome": "Kit de Instalação 3 m (1/4\" x 3/8\")", "categoria": "Acessórios", "marca": "Exemplo", "descricao": "Tubulação de cobre isolada, cabo PP e fita PVC.", "imagem": "" },
+  { "codigo": "SUP-CDS-500", "nome": "Suporte para Condensadora 500 mm", "categoria": "Acessórios", "marca": "Exemplo", "descricao": "Aço galvanizado com pintura epóxi, suporta até 80 kg.", "imagem": "" }
+]

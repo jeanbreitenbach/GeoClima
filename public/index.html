@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo GeoClima</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="topo-conteudo">
+      <h1>Geo<span>Clima</span> <small>Catálogo</small></h1>
+      <div class="filtros">
+        <input id="busca" type="search" placeholder="Buscar por nome ou código…" aria-label="Buscar produto">
+        <select id="categoria" aria-label="Filtrar por categoria">
+          <option value="">Todas as categorias</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <div id="aviso-simulado" class="aviso" hidden>
+    Preços de demonstração. Configure o <code>DEMANDA_API_URL</code> no <code>.env</code> para puxar os preços reais do Demanda.
+  </div>
+
+  <main>
+    <p id="contagem" class="contagem"></p>
+    <section id="grade" class="grade" aria-live="polite"></section>
+  </main>
+
+  <dialog id="modal" aria-labelledby="modal-titulo">
+    <button class="fechar" type="button" aria-label="Fechar">&times;</button>
+    <div class="modal-corpo">
+      <div class="modal-imagem" id="modal-imagem"></div>
+      <div class="modal-info">
+        <span class="etiqueta" id="modal-categoria"></span>
+        <h2 id="modal-titulo"></h2>
+        <p class="codigo">Cód. <span id="modal-codigo"></span></p>
+        <p id="modal-descricao" class="descricao"></p>
+        <div id="modal-preco" class="painel-preco"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
