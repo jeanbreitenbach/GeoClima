@@ -38,10 +38,9 @@ Os preços não aparecem nos cartões; só na janela que abre ao tocar no produt
 
 Endereço: **https://jeanbreitenbach.github.io/GeoClima/**
 
-Para ativar (uma vez só): no GitHub, abra o repositório → **Settings → Pages** →
-em *Build and deployment* escolha **Deploy from a branch**, selecione o branch
-`claude/digital-catalog-whatsapp-xv07ig` e a pasta **/ (root)** → **Save**.
-Em 1–2 minutos o link fica no ar. Cada atualização enviada a esse branch atualiza o site.
+O site é publicado a partir do branch `gh-pages`, que contém só os arquivos do site
+(index.html, style.css, app.js, config.js, produtos.js, logo.png, fotos/).
+Para atualizar o site, copie esses arquivos para o branch `gh-pages` e envie: em 1–2 minutos o link mostra a versão nova.
 
 ## App Android (APK)
 
