@@ -1,0 +1,58 @@
+plugins { id "com.android.application" }
+
+// Assinatura: coloque o arquivo da chave em android/keystore.jks e a senha em android/keystore.properties
+// (storePassword=..., keyAlias=..., keyPassword=...). Sem isso o APK é assinado com a chave de debug.
+def ksProps = new Properties()
+def ksPropsFile = rootProject.file("keystore.properties")
+if (ksPropsFile.exists()) ksPropsFile.withInputStream { ksProps.load(it) }
+
+android {
+    namespace "br.com.qdiqueijo.catalogo"
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "br.com.qdiqueijo.catalogo"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+        // endereço do catálogo online (o app abre a versão mais recente)
+        buildConfigField "String", "CATALOGO_URL", "\"https://jeanbreitenbach.github.io/GeoClima/\""
+    }
+
+    buildFeatures { buildConfig true }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    signingConfigs {
+        release {
+            if (ksPropsFile.exists()) {
+                storeFile rootProject.file("keystore.jks")
+                storePassword ksProps["storePassword"]
+                keyAlias ksProps["keyAlias"]
+                keyPassword ksProps["keyPassword"]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig ksPropsFile.exists() ? signingConfigs.release : signingConfigs.debug
+        }
+    }
+
+    // cópia do catálogo dentro do app, usada quando estiver sem internet
+    sourceSets { main { assets.srcDirs += ["$buildDir/catalogo-assets"] } }
+}
+
+def copiarCatalogo = tasks.register("copiarCatalogo", Copy) {
+    from(rootProject.projectDir.parentFile) {
+        include "index.html", "style.css", "app.js", "config.js", "produtos.js", "logo.png", "fotos/**"
+    }
+    into "$buildDir/catalogo-assets/www"
+}
+tasks.named("preBuild") { dependsOn copiarCatalogo }

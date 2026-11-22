@@ -56,7 +56,9 @@
   // ---------- WhatsApp ----------
   function abrirWhatsApp(texto) {
     const url = "https://wa.me/" + WPP + "?text=" + encodeURIComponent(texto);
-    window.open(url, "_blank", "noopener");
+    // no app Android o link é aberto direto no WhatsApp
+    if (/QdiQueijoApp/.test(navigator.userAgent)) location.href = url;
+    else window.open(url, "_blank", "noopener");
   }
   function linhasItens(itens, comSubtotal) {
     return itens.map((i) => {

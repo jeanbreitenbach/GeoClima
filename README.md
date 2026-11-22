@@ -33,3 +33,28 @@ As 66 fotos atuais foram recortadas do catálogo Canva (`Catalogo_Qdiqueijo`) e 
 Coloque as fotos na pasta `fotos/` com o **código do produto** como nome (ex.: `fotos/75.jpg`, `fotos/285.png`)
 e rode o script de atualização — ele liga cada foto ao produto. Sem foto, aparece um ícone da categoria.
 Os preços não aparecem nos cartões; só na janela que abre ao tocar no produto.
+
+## Link online (GitHub Pages)
+
+Endereço: **https://jeanbreitenbach.github.io/GeoClima/**
+
+Para ativar (uma vez só): no GitHub, abra o repositório → **Settings → Pages** →
+em *Build and deployment* escolha **Deploy from a branch**, selecione o branch
+`claude/digital-catalog-whatsapp-xv07ig` e a pasta **/ (root)** → **Save**.
+Em 1–2 minutos o link fica no ar. Cada atualização enviada a esse branch atualiza o site.
+
+## App Android (APK)
+
+O projeto está em `android/`. O app abre o catálogo online (sempre com os preços atuais)
+e, sem internet, mostra uma cópia que vem dentro do app. Os botões abrem o WhatsApp.
+
+Gerar o APK (precisa do Android SDK):
+
+```bash
+cd android && ./gradlew assembleRelease
+# APK em android/app/build/outputs/apk/release/app-release.apk
+```
+
+Para assinar com a mesma chave das versões anteriores, coloque `keystore.jks` e
+`keystore.properties` dentro de `android/` (esses arquivos não vão para o GitHub).
+Para lançar uma nova versão do app, aumente `versionCode` em `android/app/build.gradle`.
