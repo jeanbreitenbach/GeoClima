@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QdiQueijo — Catálogo</title>
+<meta name="description" content="Catálogo digital de produtos — peça orçamento ou faça seu pedido pelo WhatsApp.">
+<meta name="theme-color" content="#3b2f20">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-inner">
+    <img class="logo" src="logo.png" alt="QdiQueijo" width="119" height="91">
+    <div class="titulo">
+      <h1>Catálogo de Produtos</h1>
+      <p class="sub">Tabela de venda<span id="data-tabela"></span></p>
+      <a class="wpp-topo" data-wpp-link target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-wpp"/></svg><span data-wpp-num></span></a>
+    </div>
+    <button class="btn-carrinho" id="abrir-selecao" aria-label="Ver itens selecionados">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h-2l-1 2v1h2l3.6 7.6-1.4 2.4c-.5 1 .2 2 1.3 2h11v-2h-10.6l1.1-2h7.4c.8 0 1.4-.4 1.8-1l3.4-6.2c.4-.7-.1-1.5-.9-1.5h-14.7l-.9-2zm3 16a2 2 0 1 0 0 .1zm9 0a2 2 0 1 0 0 .1z"/></svg>
+      <span class="badge" id="badge" hidden>0</span>
+    </button>
+  </div>
+  <div class="busca-wrap">
+    <input type="search" id="busca" placeholder="Buscar produto ou código…" autocomplete="off" aria-label="Buscar produto">
+  </div>
+  <nav class="categorias" id="categorias" aria-label="Categorias"></nav>
+</header>
+
+<main>
+  <p class="contagem" id="contagem"></p>
+  <ul class="grade" id="grade"></ul>
+  <p class="vazio" id="vazio" hidden>Nenhum produto encontrado.</p>
+</main>
+
+<footer class="rodape">
+  <p>Pedidos e orçamentos pelo WhatsApp</p>
+  <a class="btn btn-wpp" data-wpp-link target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-wpp"/></svg><span data-wpp-num></span></a>
+</footer>
+
+<!-- Barra fixa com a seleção -->
+<div class="barra" id="barra" hidden>
+  <button class="barra-info" id="barra-abrir">
+    <strong id="barra-qtd">0 itens</strong>
+    <span id="barra-total">R$ 0,00</span>
+  </button>
+  <button class="btn btn-wpp" id="barra-orcamento">Solicitar orçamento</button>
+</div>
+
+<!-- Janela do produto -->
+<dialog class="janela" id="janela-produto" aria-labelledby="p-nome">
+  <div class="janela-conteudo">
+    <button class="fechar" data-fechar aria-label="Fechar">×</button>
+    <div class="p-icone" id="p-icone"></div>
+    <p class="p-cat" id="p-cat"></p>
+    <h2 id="p-nome"></h2>
+    <p class="p-cod" id="p-cod"></p>
+
+    <div class="p-preco">
+      <span class="valor" id="p-preco"></span>
+      <span class="unid" id="p-unid"></span>
+    </div>
+
+    <div class="qtd-linha">
+      <label for="p-qtd">Quantidade</label>
+      <div class="stepper">
+        <button type="button" data-step="-1" aria-label="Diminuir">−</button>
+        <input id="p-qtd" type="number" inputmode="decimal" min="0" step="1" value="1">
+        <span class="stepper-un" id="p-qtd-un"></span>
+        <button type="button" data-step="1" aria-label="Aumentar">+</button>
+      </div>
+    </div>
+    <p class="subtotal">Subtotal estimado: <strong id="p-subtotal"></strong></p>
+    <p class="aviso" id="p-aviso" hidden>Produto vendido por quilo — valor final conforme pesagem.</p>
+
+    <button class="btn btn-sel" id="p-selecionar"></button>
+
+    <div class="acoes">
+      <button class="btn btn-wpp-outline" id="p-orcamento">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-wpp"/></svg>
+        <span>Solicitar orçamento dos itens selecionados <small id="p-orc-qtd"></small></span>
+      </button>
+      <button class="btn btn-wpp" id="p-pedido">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-wpp"/></svg>
+        <span>Fazer pedido direto no WhatsApp</span>
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Janela da seleção -->
+<dialog class="janela" id="janela-selecao" aria-labelledby="s-titulo">
+  <div class="janela-conteudo">
+    <button class="fechar" data-fechar aria-label="Fechar">×</button>
+    <h2 id="s-titulo">Itens selecionados</h2>
+    <ul class="lista-sel" id="lista-sel"></ul>
+    <p class="vazio" id="sel-vazio">Nenhum item selecionado ainda. Toque em um produto para adicionar.</p>
+    <div id="sel-rodape">
+      <p class="total-sel">Total estimado: <strong id="sel-total"></strong></p>
+      <label class="campo">Seu nome / estabelecimento (opcional)
+        <input type="text" id="cliente" autocomplete="name">
+      </label>
+      <div class="acoes">
+        <button class="btn btn-wpp-outline" id="s-orcamento">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-wpp"/></svg>
+          <span>Solicitar orçamento dos itens</span>
+        </button>
+        <button class="btn btn-wpp" id="s-pedido">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-wpp"/></svg>
+          <span>Enviar pedido pelo WhatsApp</span>
+        </button>
+      </div>
+      <button class="limpar" id="limpar">Limpar seleção</button>
+    </div>
+  </div>
+</dialog>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-wpp" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.7c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.7 1.2 3.1 1.3 3.3 2.3 3.5 5.6 4.9c2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.4z"/></symbol>
+</svg>
+
+<script src="config.js"></script>
+<script src="produtos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
