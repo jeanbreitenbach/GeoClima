@@ -282,6 +282,13 @@
   });
 
   // ---------- Início ----------
+  // número do WhatsApp visível: 5548988147567 -> (48) 98814-7567
+  const local = WPP.replace(/^55/, "");
+  const numFmt = local.length === 11 ? `(${local.slice(0, 2)}) ${local.slice(2, 7)}-${local.slice(7)}`
+    : local.length === 10 ? `(${local.slice(0, 2)}) ${local.slice(2, 6)}-${local.slice(6)}` : local;
+  document.querySelectorAll("[data-wpp-num]").forEach((e) => (e.textContent = numFmt));
+  document.querySelectorAll("[data-wpp-link]").forEach((a) => (a.href = "https://wa.me/" + WPP));
+
   if (CFG.nomeLoja) { document.title = CFG.nomeLoja + " — Catálogo"; $(".logo").alt = CFG.nomeLoja; }
   if (TABELA.atualizadoEm) $("#data-tabela").textContent = " · " + TABELA.atualizadoEm;
   renderGrade();
