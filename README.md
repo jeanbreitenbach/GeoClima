@@ -28,6 +28,8 @@ Também aceita CSV com colunas `codigo;descricao;preco;unidade[;categoria]`.
 
 ## Fotos dos produtos
 
+As 66 fotos atuais foram recortadas do catálogo Canva (`Catalogo_Qdiqueijo`) e ficam em `fotos/<código>.jpg`.
+
 Coloque as fotos na pasta `fotos/` com o **código do produto** como nome (ex.: `fotos/75.jpg`, `fotos/285.png`)
 e rode o script de atualização — ele liga cada foto ao produto. Sem foto, aparece um ícone da categoria.
 Os preços não aparecem nos cartões; só na janela que abre ao tocar no produto.
